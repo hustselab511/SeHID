@@ -13,14 +13,14 @@ We propose **SemiHID** (Semantics-indicated Heartbeat Identification), a two-sta
 1.  **Clone the repository:**
     ```bash
     git clone [https://github.com/hustselab511/SemiHID.git](https://github.com/hustselab511/SemiHID.git)
-    cd SemiHID
     ```
 
 2.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
+    cd SemiHID
     ```
-
+    
 ## 💾 Data Preparation
 
 This study utilizes four public datasets. Please download them from the official sources below:
