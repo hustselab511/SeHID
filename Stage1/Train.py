@@ -1,7 +1,5 @@
 import os
-import argparse
 import torch
-import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from tqdm import tqdm
@@ -10,7 +8,7 @@ from tqdm import tqdm
 from CmSAModel import CmSAModel
 # Import your custom dataset modules
 # Ensure these match your actual file structure
-from dataset import choose_dataset_method, BCGAugmentDataset, SETUP_SEED
+from SemiHID.utils.dataset import load_data_or_generate_dummy, SETUP_SEED, BCGAugmentDataset
 
 
 def train_cmsa_model(model, train_loader, val_loader, optimizer,
@@ -135,9 +133,8 @@ def main():
     print(f"Loading datasets from: {DATA_ROOTS}")
 
     # Using your custom data splitting function
-    train_signals, train_labels, val_signals, val_labels, _, _ = choose_dataset_method(
-        mode=1, root_dirs=DATA_ROOTS, split_save_path=SPLIT_INFO_PATH
-    )
+    DATA_ROOT = "dataset/Kansas"  # Users will change this to their real path
+    train_signals, val_signals, train_labels, val_labels = load_data_or_generate_dummy(DATA_ROOT)
 
     # Augmentation Configuration
     augment_config = {
