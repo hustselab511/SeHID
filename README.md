@@ -18,7 +18,6 @@ We propose **SemiHID** (Semantics-indicated Heartbeat Identification), a two-sta
 2.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
-    cd SemiHID
     ```
     
 ## 💾 Data Preparation
