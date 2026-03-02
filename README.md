@@ -1,10 +1,10 @@
-# SemiHID: Enhancing BCG Heartbeat Detection for Arrhythmic Patients
+# SeHID: Semantics-enhanced Heartbeat Identification for Robust BCG Monitoring in Arrhythmia Patients
 
 ## 📖 Abstract
 
 Ballistocardiography (BCG) signals enable continuous cardiovascular health monitoring but exhibit varying morphologies, especially in patients with arrhythmia. Existing methods often rely on morphological consistency, which fails under arrhythmic conditions.
 
-We propose **SemiHID** (Semantics-indicated Heartbeat Identification), a two-stage deep learning framework that reframes heartbeat detection as a semantic feature conversion task. 
+We propose **SeHID** (Semantics-indicated Heartbeat Identification), a two-stage deep learning framework that reframes heartbeat detection as a semantic feature conversion task. 
 1.  **Stage I (CmSA):** A Transformer encoder captures cross-modal semantic alignment to anchor potential heartbeat locations.
 2.  **Stage II (FGWR):** A U-Net backbone performs multi-scale fusion of waveforms and semantic features to reconstruct fine-grained QRS-like indicators.
 
@@ -12,7 +12,7 @@ We propose **SemiHID** (Semantics-indicated Heartbeat Identification), a two-sta
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/hustselab511/SemiHID.git](https://github.com/hustselab511/SemiHID.git)
+    git clone [https://github.com/hustselab511/SeHID.git](https://github.com/hustselab511/SeHID.git)
     ```
 
 2.  **Install dependencies:**
