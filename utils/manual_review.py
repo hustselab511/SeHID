@@ -28,7 +28,8 @@ def validate_j_peak_quality(
     j_peaks: np.ndarray,
     fs: int = 125,
     j_search_window_ms: tuple = (150, 350),
-    peak_ambiguity_threshold: float = 0.8
+    peak_ambiguity_threshold: float = 0.9,
+    peak_to_avg_ratio_threshold: float = 0.5
 ) -> tuple[bool, str]:
     """
     Validate J-peak detection quality within the 150-350ms search window.
@@ -46,7 +47,9 @@ def validate_j_peak_quality(
     j_search_window_ms : tuple, optional
         J-peak search window in ms after R-peak, default (150, 350)
     peak_ambiguity_threshold : float, optional
-        Threshold for peak ambiguity detection, default 0.8 (80%)
+        Threshold for peak ambiguity detection, default 0.9 (90% - 10% difference)
+    peak_to_avg_ratio_threshold : float, optional
+        Threshold for peak-to-average amplitude ratio, default 0.5 (50%)
     
     Returns
     -------
@@ -81,6 +84,13 @@ def validate_j_peak_quality(
         
         # Get peak amplitudes
         peak_amplitudes = search_window[peak_indices]
+        
+        # Criterion 1a: Check peak amplitude relative to window average
+        max_amp = np.max(peak_amplitudes)
+        window_avg = np.mean(np.abs(search_window))
+        
+        if max_amp < peak_to_avg_ratio_threshold * window_avg:
+            return False, "Peak Amplitude Below 50% of Window Average"
         
         # Criterion 2: Check for ambiguous peaks (multiple similar amplitudes)
         if len(peak_amplitudes) >= 2:
